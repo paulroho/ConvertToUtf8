@@ -14,7 +14,7 @@ namespace ConvertToUtf8
             var inputFile = args[0];
             var outputFile = args[1];
 
-            var converter = new Converter();
+            var converter = ConverterFactory();
             converter.Convert(inputFile, outputFile);
         }
 
@@ -24,5 +24,7 @@ namespace ConvertToUtf8
             Console.WriteLine("Usage:");
             Console.WriteLine("ConvertToUtf8.exe <input file> <output file>");
         }
+
+        public static Func<IConverter> ConverterFactory { get; set; }
     }
 }

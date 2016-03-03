@@ -3,7 +3,12 @@ using System.Text;
 
 namespace ConvertToUtf8
 {
-    class Converter
+    public interface IConverter
+    {
+        void Convert(string inputFile, string outputFile);
+    }
+
+    public class Converter : IConverter
     {
         public void Convert(string inputFile, string outputFile)
         {

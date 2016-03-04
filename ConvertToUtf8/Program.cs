@@ -4,6 +4,8 @@ namespace ConvertToUtf8
 {
     public static class Program
     {
+        public static Func<IConverter> ConverterFactory { get; set; } = () => new Converter();
+
         public static void Main(params string[] args)
         {
             if (args.Length != 2)
@@ -25,6 +27,9 @@ namespace ConvertToUtf8
             Console.WriteLine("ConvertToUtf8.exe <input file> <output file>");
         }
 
-        public static Func<IConverter> ConverterFactory { get; set; }
+        public static void ResetConverterFactory()
+        {
+            ConverterFactory = () => new Converter();
+        }
     }
 }

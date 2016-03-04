@@ -9,17 +9,21 @@ namespace ConvertToUtf8.Tests
     public class ConsoleTests
     {
         private ConsoleMocker _console;
+        private Mock<IConverter> _converterMock;
 
         [TestInitialize]
-        public void MockConsole()
+        public void SetupMocks()
         {
+            _converterMock = new Mock<IConverter>();
+            Program.ConverterFactory = () => _converterMock.Object;
             _console = new ConsoleMocker();
         }
 
         [TestCleanup]
-        public void UnmockConsole()
+        public void ShutdownMocks()
         {
             _console.Dispose();
+            Program.ResetConverterFactory();
         }
 
         [TestMethod]
@@ -37,13 +41,10 @@ namespace ConvertToUtf8.Tests
         [TestMethod]
         public void CallingWithTwoArgumentsPassesThemCorrectlyToConverter()
         {
-            var converterMock = new Mock<IConverter>();
-            Program.ConverterFactory = () => converterMock.Object;
-
             // Act
             Program.Main("C:\\FileIn.txt", "C:\\FileOut.txt");
 
-            converterMock.Verify(cvtr => cvtr.Convert("C:\\FileIn.txt", "C:\\FileOut.txt"));
+            _converterMock.Verify(cvtr => cvtr.Convert("C:\\FileIn.txt", "C:\\FileOut.txt"));
         }
     }
 }

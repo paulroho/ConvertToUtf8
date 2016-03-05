@@ -14,13 +14,16 @@ namespace ConvertToUtf8
     {
         public void ConvertFile(string inputFile, string outputFile)
         {
+            Console.Write($"Converting {inputFile}...");
             using (var reader = new StreamReader(inputFile, Encoding.Unicode))
             {
-                using (var writer = new StreamWriter(outputFile, false, Encoding.UTF8))
+                var utf8EncodingWithoutBOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
+                using (var writer = new StreamWriter(outputFile, false, utf8EncodingWithoutBOM))
                 {
                     CopyContents(reader, writer);
                 }
             }
+            Console.WriteLine("(done)");
         }
 
         public void ConvertFiles(string folder)

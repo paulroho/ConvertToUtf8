@@ -8,6 +8,7 @@ namespace ConvertToUtf8.Tests
     [TestClass]
     public class ConsoleTests
     {
+        private Program _program;
         private ConsoleMocker _console;
         private Mock<IConverter> _converterMock;
 
@@ -15,7 +16,7 @@ namespace ConvertToUtf8.Tests
         public void SetupMocks()
         {
             _converterMock = new Mock<IConverter>();
-            Program.ConverterFactory = () => _converterMock.Object;
+            _program = new Program(_converterMock.Object);
             _console = new ConsoleMocker();
         }
 
@@ -23,14 +24,13 @@ namespace ConvertToUtf8.Tests
         public void ShutdownMocks()
         {
             _console.Dispose();
-            Program.ResetConverterFactory();
         }
 
         [TestMethod]
         public void CallingWithNoArgumentShowsUsageInfo()
         {
             // Act
-            Program.Main();
+            _program.Main();
 
             _console.Content.Should().Contain("ConvertToUtf8.exe");
             _console.Content.Should().Contain("Usage");
@@ -42,7 +42,7 @@ namespace ConvertToUtf8.Tests
         public void CallingWithTwoArgumentsPassesThemCorrectlyToConverter()
         {
             // Act
-            Program.Main("C:\\FileIn.txt", "C:\\FileOut.txt");
+            _program.Main("C:\\FileIn.txt", "C:\\FileOut.txt");
 
             _converterMock.Verify(cvtr => cvtr.Convert("C:\\FileIn.txt", "C:\\FileOut.txt"));
         }

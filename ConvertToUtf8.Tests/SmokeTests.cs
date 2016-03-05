@@ -14,7 +14,7 @@ namespace ConvertToUtf8.Tests
             using (var outputFile = new TemporaryFile(createFile: false))
             {
                 // Act
-                Program.Main(inputFile.FullPath, outputFile.FullPath);
+                ConsoleFrontend.Main(inputFile.FullPath, outputFile.FullPath);
 
                 outputFile.FullPath.Should().BeTheNameOfAnExistingFile("the output file should have been created");
             }

@@ -2,11 +2,16 @@
 
 namespace ConvertToUtf8
 {
-    public static class Program
+    public class Program
     {
-        public static Func<IConverter> ConverterFactory { get; set; } = () => new Converter();
+        private readonly IConverter _converter;
 
-        public static void Main(params string[] args)
+        public Program(IConverter converter)
+        {
+            _converter = converter;
+        }
+
+        public void Main(params string[] args)
         {
             if (args.Length != 2)
             {
@@ -16,20 +21,14 @@ namespace ConvertToUtf8
             var inputFile = args[0];
             var outputFile = args[1];
 
-            var converter = ConverterFactory();
-            converter.Convert(inputFile, outputFile);
+            _converter.Convert(inputFile, outputFile);
         }
 
-        private static void ShowUsageInfo()
+        private void ShowUsageInfo()
         {
             Console.WriteLine("This is ConvertToUtf8.exe");
             Console.WriteLine("Usage:");
             Console.WriteLine("ConvertToUtf8.exe <input file> <output file>");
-        }
-
-        public static void ResetConverterFactory()
-        {
-            ConverterFactory = () => new Converter();
         }
     }
 }

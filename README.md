@@ -1,5 +1,5 @@
 # ConvertToUtf8
-Simple tool for the Windows commandline to convert files to Utf-8.
+Simple tool for the Windows commandline to convert files encoded int UTF-16 to UTF-8. There is no detection of the actual encoding of the input file.
 
 Based on the code provided by Jon Skeet in this answer on StackOverflow: [http://stackoverflow.com/a/265444/571213](http://stackoverflow.com/a/265444/571213).
 
@@ -15,7 +15,7 @@ Note that `<input file>` and `<output file>` have to be different (no in-place c
 
     ConvertToUtf8.exe <folder>
 
-This form converts all files in the specified folder to UTF-8
+This form converts all files in the specified folder to UTF-8. **Do not apply twice** (see warning below).
 
 ## WARNING - Known Issue
 

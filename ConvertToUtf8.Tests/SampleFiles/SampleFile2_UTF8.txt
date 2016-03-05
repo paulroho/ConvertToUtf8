@@ -1,0 +1,264 @@
+Version =20
+VersionRequired =20
+Checksum =-136169993
+Begin Form
+    AllowFilters = NotDefault
+    RecordSelectors = NotDefault
+    AutoCenter = NotDefault
+    NavigationButtons = NotDefault
+    AllowDeletions = NotDefault
+    DividingLines = NotDefault
+    AllowAdditions = NotDefault
+    KeyPreview = NotDefault
+    AllowUpdating =2
+    ScrollBars =0
+    ViewsAllowed =1
+    PictureAlignment =2
+    DatasheetGridlinesBehavior =3
+    GridY =10
+    Width =7313
+    DatasheetFontHeight =10
+    ItemSuffix =10
+    Left =6435
+    Top =1110
+    Right =12780
+    Bottom =7110
+    DatasheetGridlinesColor =12632256
+    RecSrcDt = Begin
+        0x6593242f9b56e240
+    End
+    GUID = Begin
+        0x0921f252f3d8ca49a024134b783be26d
+    End
+    NameMap = Begin
+        0x0acc0e5500000000000000000000000000000000000000000c00000003000000 ,
+        0x0000000000000000000000000000
+    End
+    RecordSource ="SELECT * FROM qrySelErgebnisSprengel WHERE Part_Name IS NOT NULL ORDER BY Part_O"
+        "b"
+    Caption ="fsubSelErgebnis"
+    OnCurrent ="[Event Procedure]"
+    DatasheetFontName ="Arial"
+    OnKeyDown ="[Event Procedure]"
+    NoSaveCTIWhenDisabled =1
+    Begin
+        Begin Label
+            BackStyle =0
+            BackColor =-2147483633
+            ForeColor =-2147483630
+        End
+        Begin Rectangle
+            SpecialEffect =3
+            BackStyle =0
+            Width =850
+            Height =850
+        End
+        Begin Line
+            SpecialEffect =3
+            Width =1701
+        End
+        Begin Image
+            BackStyle =0
+            OldBorderStyle =0
+            PictureAlignment =2
+            Width =1701
+            Height =1701
+        End
+        Begin CommandButton
+            Width =1701
+            Height =283
+            FontSize =8
+            FontWeight =400
+            FontName ="MS Sans Serif"
+        End
+        Begin OptionButton
+            SpecialEffect =2
+            LabelX =230
+            LabelY =-30
+        End
+        Begin CheckBox
+            SpecialEffect =2
+            LabelX =230
+            LabelY =-30
+        End
+        Begin OptionGroup
+            SpecialEffect =3
+            Width =1701
+            Height =1701
+        End
+        Begin BoundObjectFrame
+            SpecialEffect =2
+            OldBorderStyle =0
+            BackStyle =0
+            Width =4536
+            Height =2835
+            LabelX =-1701
+        End
+        Begin TextBox
+            SpecialEffect =2
+            Width =1701
+            LabelX =-1701
+            BackColor =-2147483643
+            ForeColor =-2147483640
+        End
+        Begin ListBox
+            SpecialEffect =2
+            Width =1701
+            Height =1417
+            LabelX =-1701
+            BackColor =-2147483643
+            ForeColor =-2147483640
+        End
+        Begin ComboBox
+            SpecialEffect =2
+            Width =1701
+            LabelX =-1701
+            BackColor =-2147483643
+            ForeColor =-2147483640
+        End
+        Begin Subform
+            SpecialEffect =2
+            Width =1701
+            Height =1701
+        End
+        Begin UnboundObjectFrame
+            SpecialEffect =2
+            OldBorderStyle =1
+            Width =4536
+            Height =2835
+        End
+        Begin ToggleButton
+            Width =283
+            Height =283
+            FontSize =8
+            FontWeight =400
+            FontName ="MS Sans Serif"
+        End
+        Begin Tab
+            BackStyle =0
+            Width =5103
+            Height =3402
+        End
+        Begin Section
+            Height =623
+            BackColor =16776960
+            Name ="Detailbereich"
+            GUID = Begin
+                0xff4e376f238c184c9574f97b21420cca
+            End
+            Begin
+                Begin TextBox
+                    Visible = NotDefault
+                    OverlapFlags =93
+                    Top =57
+                    Width =54
+                    Height =345
+                    ColumnWidth =1701
+                    Name ="Spr_Id"
+                    ControlSource ="Spr_Id"
+                    GUID = Begin
+                        0x8477f12fef023f4ca535905a949f5f6e
+                    End
+                End
+                Begin TextBox
+                    Enabled = NotDefault
+                    Locked = NotDefault
+                    SpecialEffect =0
+                    OldBorderStyle =0
+                    OverlapFlags =85
+                    TextAlign =3
+                    BackStyle =0
+                    Left =1530
+                    Top =120
+                    Width =2400
+                    Height =345
+                    ColumnWidth =2310
+                    FontSize =10
+                    FontWeight =700
+                    TabIndex =1
+                    BackColor =16777215
+                    ForeColor =0
+                    Name ="txtPartei"
+                    ControlSource ="Part_Name"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xe9c3bc0ec928374687c313b224918dff
+                    End
+                End
+                Begin TextBox
+                    DecimalPlaces =0
+                    OverlapFlags =85
+                    Left =3968
+                    Top =113
+                    Width =1140
+                    Height =345
+                    ColumnWidth =900
+                    FontSize =10
+                    FontWeight =700
+                    TabIndex =2
+                    BackColor =12632256
+                    ForeColor =0
+                    Name ="txtStimmen"
+                    ControlSource ="Erg_Stimmen"
+                    Format ="Standard"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xf2844c5d49868f40a77d56c35cad2def
+                    End
+                End
+                Begin TextBox
+                    Enabled = NotDefault
+                    Locked = NotDefault
+                    DecimalPlaces =2
+                    OverlapFlags =85
+                    Left =5173
+                    Top =113
+                    Width =891
+                    Height =345
+                    FontSize =10
+                    FontWeight =700
+                    TabIndex =3
+                    BackColor =16776960
+                    ForeColor =0
+                    Name ="txtProzStimmen"
+                    ControlSource ="=div1([erg_Stimmen],[spr_abgegebene]-[spr_ungueltige])+IIf([part_ob]=1,[korrektu"
+                        "r],0)"
+                    Format ="Percent"
+                    DefaultValue ="0"
+                    FontName ="Arial"
+                    GUID = Begin
+                        0xbf965aa1b8e9154f8ee495d340e8aaeb
+                    End
+                End
+                Begin BoundObjectFrame
+                    SizeMode =3
+                    SpecialEffect =0
+                    OverlapFlags =247
+                    Width =1418
+                    Height =567
+                    TabIndex =4
+                    Name ="OLEGebunden53"
+                    ControlSource ="Part_Bild"
+                    GUID = Begin
+                        0x7620ece18b9bc54ba44a9ad10d737cd5
+                    End
+                End
+            End
+        End
+    End
+End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+Option Explicit
+
+Private Sub Form_Current()
+  'Me.txtProzStimmen = Me.txtStimmen / Me.Parent.txtGueltige
+End Sub
+
+Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
+  If KeyCode = vbKeyPageUp Or KeyCode = vbKeyPageDown Then KeyCode = 0
+End Sub

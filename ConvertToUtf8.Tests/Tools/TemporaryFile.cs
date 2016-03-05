@@ -14,6 +14,15 @@ namespace ConvertToUtf8.Tests.Tools
             }
         }
 
+        public TemporaryFile(string folder, bool createFile = true)
+        {
+            FullPath = Path.Combine(folder, Guid.NewGuid() + ".tmp");
+            if (createFile)
+            {
+                File.Create(FullPath).Close();
+            }
+        }
+
         public string FullPath { get; }
 
         public void Dispose()
@@ -27,6 +36,11 @@ namespace ConvertToUtf8.Tests.Tools
             {
                 File.Delete(fullPath);
             }
+        }
+
+        public void SetContentFromFile(string sourceFileName)
+        {
+            File.Copy(sourceFileName, FullPath, overwrite: true);
         }
     }
 }

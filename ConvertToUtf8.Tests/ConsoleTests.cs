@@ -44,7 +44,16 @@ namespace ConvertToUtf8.Tests
             // Act
             _program.Main("C:\\FileIn.txt", "C:\\FileOut.txt");
 
-            _converterMock.Verify(cvtr => cvtr.Convert("C:\\FileIn.txt", "C:\\FileOut.txt"));
+            _converterMock.Verify(cvtr => cvtr.ConvertFile("C:\\FileIn.txt", "C:\\FileOut.txt"));
+        }
+
+        [TestMethod]
+        public void CallingWithOneArgumentPassesItCorrectlyToConverter()
+        {
+            // Act
+            _program.Main("C:\\MyFiles\\*.txt");
+
+            _converterMock.Verify(cvtr => cvtr.ConvertFiles("C:\\MyFiles\\*.txt"));
         }
     }
 }

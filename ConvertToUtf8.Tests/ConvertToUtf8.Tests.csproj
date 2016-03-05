@@ -70,6 +70,8 @@
     <Compile Include="Tools\ConsoleMocker.cs" />
     <Compile Include="Tools\ShouldFileExtensions.cs" />
     <Compile Include="Tools\TemporaryFile.cs" />
+    <Compile Include="Tools\TemporaryFileAssertions.cs" />
+    <Compile Include="Tools\TemporaryFolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConvertToUtf8\ConvertToUtf8.csproj">
@@ -79,6 +81,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SampleFiles\SampleFile1_UCS2_LE_BOM.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleFiles\SampleFile1_UTF8.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleFiles\SampleFile2_UCS2_LE_BOM.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleFiles\SampleFile2_UTF8.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
